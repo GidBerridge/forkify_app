@@ -480,6 +480,7 @@ const controlRecipes = async function() {
     try {
         const id = window.location.hash.slice(1);
         if (!id) return;
+        console.log(id);
         _recipeViewJsDefault.default.renderSpinner();
         // Loading recipe
         _modelJs.loadRecipe(id);
