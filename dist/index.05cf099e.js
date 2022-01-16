@@ -14856,12 +14856,12 @@ const state = {
     recipe: {
     }
 };
-const loadRecipe = async function() {
+const loadRecipe = async function(id) {
     try {
-        const res = await fetch('https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886');
+        const res = await fetch(//  'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
+        `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);
         const data = await res.json();
-        console.log(data);
-        console.log('test 2');
+        console.log(id);
         if (!res.ok) throw new Error(`${data.message} (${res.status})`);
         const { recipe  } = data.data;
         state.recipe = {
@@ -14874,7 +14874,7 @@ const loadRecipe = async function() {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
-        console.log(state.recipe);
+        console.log(state.id);
     } catch (err) {
         alert(err);
     }
@@ -14909,7 +14909,7 @@ class RecipeView {
         this.#parentElement.innerHTML = '';
         this.#parentElement.insertAdjacentHTML('afterbegin', markup);
     };
-     #generateMarkup() {
+    generateMarkup() {
         return `
         <figure class="recipe__fig">
               <img src="${this.#data.image}" alt="${this.#data.title}" class="recipe__img" />

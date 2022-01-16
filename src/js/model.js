@@ -4,16 +4,15 @@ export const state = {
     recipe: {},
 };
 
-export const loadRecipe = async function() {
+export const loadRecipe = async function(id) {
     try {
     
     const res = await fetch(
-     'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
-      // `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
+    //  'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
+      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
       );
       const data = await res.json();
-      console.log(data);
-      console.log('test 2');
+      console.log(id);
 
       if(!res.ok) throw new Error(`${data.message} (${res.status})`);
 
@@ -29,7 +28,7 @@ export const loadRecipe = async function() {
         cookingTime: recipe.cooking_time,
         ingredients: recipe.ingredients,
       };
-      console.log(state.recipe);
+      console.log(state.id);
     } catch (err) {
         alert(err);
     }
